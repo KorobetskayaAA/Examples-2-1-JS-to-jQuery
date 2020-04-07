@@ -6,13 +6,10 @@ window.addEventListener("load", function () {
 		let header = collapses[i].getElementsByTagName("h3")[0];
 		let article = collapses[i].getElementsByTagName("article")[0];
 
+		article.classList.add("hidden");
+
 		header.addEventListener('click', function() {
-			if (article.style.display == 'none') {
-				article.style.display = 'block';
-			}
-			else {
-				article.style.display = 'none';
-			}
+			article.classList.toggle("hidden");
 		});
 	}
 });
