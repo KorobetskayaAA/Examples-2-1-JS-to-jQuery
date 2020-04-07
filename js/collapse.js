@@ -9,6 +9,7 @@ window.addEventListener("load", function () {
 		article.classList.add("hidden");
 
 		header.addEventListener('click', function() {
+			header.classList.toggle("expanded");
 			article.classList.toggle("hidden");
 		});
 	}

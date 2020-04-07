@@ -23,3 +23,14 @@
 .hidden {
 	display: none;
 }
+
+.collapse > h3:before {
+	content: "+";
+	display: inline-block;
+	width: 1em;
+	margin-right: 4px;
+	text-align: center;
+}
+.collapse > h3.expanded:before {
+	content: "\2212";
+}
