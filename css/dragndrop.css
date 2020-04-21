@@ -1,0 +1,16 @@
+#canvas {
+	width: 90vw;
+	height: 60vh;
+	margin: 5px auto;
+	background: wheat;
+}
+
+.draggable {
+	width: 30px;
+	height: 30px;
+	margin: 0;
+	padding: 0;
+	background: blue;
+	border: 1px solid black;
+	border-radius: 50%;
+}
