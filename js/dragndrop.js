@@ -21,6 +21,43 @@ window.addEventListener("load", function() {
 		elem.style.top = targetY + "px";
 	};
 
+	// сместить элемент на заданный отступ
+	function moveBy(elem, dX, dY) {
+		if(!elem) return;
+		let targetX = (elem.offsetLeft + dX);
+		let targetY = (elem.offsetTop + dY);
+		elem.style.left = targetX + "px";
+		elem.style.top = targetY + "px";
+	};
+
+	// сделать элемент перетаскиваемым
+	let setDragging = function(elem) {
+		// запомнить, что тащим
+		let draggingElement = null;
+
+		// начало перетаскивания по зажатой мыши
+		elem.addEventListener('mousedown', beginDrag);
+
+		// начать перетаскивание
+		function beginDrag(e) {
+			draggingElement = this;
+			canvas.addEventListener('mousemove', doDrag);
+			canvas.addEventListener('mousemove', doDrag);
+			canvas.addEventListener('mouseup', endDrag);
+		}
+		// одно движение мышью
+		function doDrag(e) {
+			// на сколько подвинуть
+			moveBy(draggingElement, e.movementX, e.movementY);
+		}
+		// закончить перетаскивать
+		function endDrag() {
+			canvas.removeEventListener('mousemove', doDrag);
+			canvas.removeEventListener('mouseup', endDrag);
+			draggingElement = null;
+		}
+	};
+
 	// коллекция элементов, которые перемещаем
 	let draggables = document.getElementsByClassName("draggable");
 	// настраиваем каждый элемент коллекции
@@ -33,6 +70,10 @@ window.addEventListener("load", function() {
 		let color = i * (255 / (draggables.length - 1));
 		// от синего до белого
 		draggables[i].style.backgroundColor = `rgb(${color},${color},255)`;
-	}
 
+		// отключаем стандартный drag'n'drop
+		draggables[i].draggable = false;
+		// делаем элемент перетаскиваемым
+		setDragging(draggables[i]);
+	}
 });
