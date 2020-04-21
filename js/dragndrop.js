@@ -42,7 +42,6 @@ window.addEventListener("load", function() {
 		function beginDrag(e) {
 			draggingElement = this;
 			canvas.addEventListener('mousemove', doDrag);
-			canvas.addEventListener('mousemove', doDrag);
 			canvas.addEventListener('mouseup', endDrag);
 		}
 		// одно движение мышью
