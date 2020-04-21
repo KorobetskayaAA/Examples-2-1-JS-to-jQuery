@@ -3,6 +3,7 @@
 	height: 60vh;
 	margin: 5px auto;
 	background: wheat;
+	position: relative;
 }
 
 .draggable {
@@ -13,4 +14,5 @@
 	background: blue;
 	border: 1px solid black;
 	border-radius: 50%;
+	position: absolute;
 }
