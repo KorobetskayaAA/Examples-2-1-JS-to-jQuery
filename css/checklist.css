@@ -1,0 +1,25 @@
+.checklist {
+	display: inline-block;
+	border: 2px solid grey;
+	border-radius: 5px;
+}
+
+.checklist .panel {
+	background: wheat;
+	padding: 4px 2px
+}
+
+.checklist > ul {
+	margin: 2px;
+	padding: 4px 8px;
+	list-style-type: none;
+	height: 5em;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.checklist .panel > button {
+	display: inline-block;
+	margin: 2px;
+	padding: 0px 5px;
+}
