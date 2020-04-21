@@ -49,6 +49,8 @@ window.addEventListener("load", function() {
 		function doDrag(e) {
 			// на сколько подвинуть
 			moveBy(draggingElement, e.movementX, e.movementY);
+			// проверка, не вылезли ли за границы
+			checkInside(draggingElement, 0, 0, canvas.clientWidth, canvas.clientHeight);
 		}
 		// закончить перетаскивать
 		function endDrag() {
@@ -56,6 +58,26 @@ window.addEventListener("load", function() {
 			canvas.removeEventListener('mouseup', endDrag);
 			draggingElement = null;
 		}
+		// проверка, не вылезли ли за границы
+		// если да - прекратить перетаскивание
+		function checkInside(elem, minX, minY, maxX, maxY) {
+			if (elem.offsetLeft < 0) {
+				elem.style.left = 0 + "px";
+				endDrag();
+			}
+			else if (elem.offsetLeft > maxX - elem.clientWidth) {
+				elem.style.left = maxX - elem.clientWidth + "px";
+				endDrag();
+			};
+			if (elem.offsetTop < 0) {
+				elem.style.top = 1 + "px";
+				endDrag();
+			}
+			else if (elem.offsetTop > maxY - elem.clientHeight) {
+				elem.style.top = maxY - elem.clientHeight + "px";
+				endDrag();
+			};
+		};
 	};
 
 	// коллекция элементов, которые перемещаем
